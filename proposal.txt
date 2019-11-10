@@ -1,0 +1,16 @@
+BLUETOOTH IN PYTHON PROJECT
+After watching a video about Bluetooth and JavaScript (https://www.youtube.com/watch?v=XDc5HUVMI5U)
+I became curious if something similar could be done in Python. 
+
+There seem to be two main ways to work with Bluetooth in Python:
+1) Natively via Python Sockets, support was added in Python 3.3
+2) Via the 3rd party module PyBluez (https://github.com/pybluez/pybluez)
+
+The more feature rich (and probably easier) method appears to be PyBluez.
+
+Somewhat inspired by what the presenter did in the JavaScipt lecture, I hope to write a Python
+program that at the bare minimum can control a light bulb via Bluetooth and change its colors.
+At the moment I haven't decided whether the interface will be through the command line or through
+a GUI.
+
+If I have time leftover, I intend to try and add other Bluetooth enabled devices to my program.
