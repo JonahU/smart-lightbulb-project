@@ -1,8 +1,8 @@
 import pygatt
 from binascii import hexlify
 
-adapter = pygatt.BGAPIBackend()
-MAC_ADDRESS = 'something'
+adapter = pygatt.BGAPIBackend(serial_port="COM3")
+MAC_ADDRESS = "something"
 
 def print_stuff(handle, value):
     """
@@ -13,6 +13,7 @@ def print_stuff(handle, value):
 
 try:
     adapter.start()
+    print('started')
     device = adapter.connect(MAC_ADDRESS)
     value = device.char_read("a1e8f5b1-696b-4e4c-87c6-69dfe0b0093b", callback=print_stuff)
 finally:
