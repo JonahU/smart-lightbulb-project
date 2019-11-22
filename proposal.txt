@@ -14,3 +14,10 @@ At the moment I haven't decided whether the interface will be through the comman
 a GUI.
 
 If I have time leftover, I intend to try and add other Bluetooth enabled devices to my program.
+
+UPDATE 11/22:
+Python Bluetooth support is poor and Windows 10 Bluetooth LTE support is particularly bad.
+Despite a fair amount of effort, I was unable to successfully install and run any Python module 
+for interfacing with Bluetooth LTE hardware that works on Windows. I was able to install the 
+most popular modules on a Linux VM but then there were hardware issues. So I am continuing with
+the original idea but I have decided to switch to using a WiFi connected light bulb.
