@@ -1,3 +1,6 @@
+import sys
+from lifxlan import LifxLAN
+
 def main():
     num_lights = None
     if len(sys.argv) != 2:
