@@ -1,6 +1,6 @@
-from frontend.color_picker import flask_frontend
+from frontend.color_picker import start_frontend
 from setup import setup
 
 if __name__ == '__main__':
-    setup()
-    flask_frontend.run(debug=True)
+    my_bulb = setup()
+    start_frontend(my_bulb)

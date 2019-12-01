@@ -1,0 +1,2 @@
+class LightBulb:
+    raise NotImplementedError

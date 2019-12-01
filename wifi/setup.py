@@ -18,3 +18,5 @@ def setup():
     my_bulb.set_brightness(65535)
     my_bulb.set_saturation(65535)
     my_bulb.set_power(0)
+
+    return my_bulb

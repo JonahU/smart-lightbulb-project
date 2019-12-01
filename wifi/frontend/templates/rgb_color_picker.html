@@ -1,0 +1,30 @@
+<html>
+   <head></head>
+   <body>
+      <form action="/rgb" method="POST" role="form">
+         <button type="button" onclick="location.href = '/';">Go back &larr;</button>
+         <h1>RGB Values</h1>
+         <div id="r" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Red</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="r" min="0" max="100" value={{form.r}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:0-100 | Current:{{form.r}}</p>
+         </div>
+         <div id="g" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Green</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="g" min="0" max="100" value={{form.g}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:0-100 | Current:{{form.g}}</p>
+         </div>
+         <div id="b" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Blue</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="b" min="0" max="100" value={{form.b}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:0-100 | Current:{{form.b}}</p>
+         </div>         
+         <div id="kelvin" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Kelvin</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="kelvin" min="2500" max="9000" value={{form.kelvin}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:2500-9000 | Current:{{form.kelvin}}</p>
+         </div>
+         <p><input style="padding: 5px; width: 100px;" type="submit" value="submit" /></p>
+      </form>
+   </body>
+</html>

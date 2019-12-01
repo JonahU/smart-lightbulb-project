@@ -1,0 +1,30 @@
+<html>
+   <head></head>
+   <body>
+      <form action="/hsbk" method="POST" role="form">
+         <button type="button" onclick="location.href = '/';">Go back &larr;</button>
+         <h1>HSBK Values</h1>
+         <div id="hue" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Hue</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="hue" min="0" max="65535" value={{form.hue}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:0-65535 | Current:{{form.hue}}</p>
+         </div>
+         <div id="saturation" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Saturation</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="saturation" min="0" max="65535" value={{form.saturation}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:0-65535 | Current:{{form.saturation}}</p>
+         </div>
+         <div id="brightness" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Brightness</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="brightness" min="0" max="65535" value={{form.brightness}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:0-65535 | Current:{{form.brightness}}</p>
+         </div>         
+         <div id="kelvin" style="position: relative; overflow: hidden;">
+            <h3 style="position: relative; width: 10%; float: left;">Kelvin</h3>
+            <p style="position: relative; width: 15%; float: left;"><input type="range" name="kelvin" min="2500" max="9000" value={{form.kelvin}} /></p>
+            <p style="position: relative; width: 25%; float: left;">Range:2500-9000 | Current:{{form.kelvin}}</p>
+         </div>
+         <p><input style="padding: 5px; width: 100px;" type="submit" value="submit" /></p>
+      </form>
+   </body>
+</html>
