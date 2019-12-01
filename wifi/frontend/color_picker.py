@@ -5,8 +5,14 @@ my_bulb = None
 
 def handle_color_change(new_values):
     if my_bulb is not None:
-        if hue in new_values: # hsbk
-            my_bulb.set_color(list(new_values))
+        if "hue" in new_values: # hsbk
+            new_color = [
+                new_values['hue'],
+                new_values['saturation'],
+                new_values['brightness'],
+                new_values['kelvin']
+            ]
+            my_bulb.set_color(new_color)
         else: # rgb
             raise NotImplementedError
     else:
