@@ -6,12 +6,12 @@ my_bulb = None
 def handle_color_change(new_values):
     if my_bulb is not None:
         if "hue" in new_values: # hsbk
-            new_color = [
+            new_color = (
                 new_values['hue'],
                 new_values['saturation'],
                 new_values['brightness'],
                 new_values['kelvin']
-            ]
+            )
             my_bulb.set_color(new_color)
         else: # rgb
             raise NotImplementedError
@@ -29,13 +29,22 @@ def color_sliders_hsbk():
         handle_color_change(hsbk_color)
         return render_template("hsbk_color_picker.html", form=hsbk_color)
     elif request.method == "GET":
-        default_form = {
-            "hue": 0,
-            "brightness": 0,
-            "saturation": 0,
-            "kelvin": 2500
-        }
-        return render_template("hsbk_color_picker.html", form=default_form)
+        if my_bulb is not None:
+            prev_values = my_bulb.get_color()
+            initial = {
+                "hue": prev_values[0],
+                "brightness": prev_values[1],
+                "saturation": prev_values[2],
+                "kelvin": prev_values[3]
+            }
+        else:
+            initial = {
+                "hue": 0,
+                "brightness": 0,
+                "saturation": 0,
+                "kelvin": 2500
+            }
+        return render_template("hsbk_color_picker.html", form=initial)
 
 @flask_frontend.route('/rgb', methods=['GET','POST'])
 def color_sliders_rgb():
@@ -52,10 +61,10 @@ def color_sliders_rgb():
         }
         return render_template("rgb_color_picker.html", form=default_form)
 
-def start_frontend(lightbulb):
+def start_frontend(lightbulb, host, port):
     global my_bulb
     my_bulb = lightbulb
-    flask_frontend.run(debug=True)
+    flask_frontend.run(debug=True, host=host, port=port)
 
 if __name__ == '__main__':
    flask_frontend.run(debug=True)
