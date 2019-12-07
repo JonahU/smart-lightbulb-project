@@ -14,7 +14,13 @@ def handle_color_change(new_values):
             )
             my_bulb.set_color(new_color)
         else: # rgb
-            raise NotImplementedError
+            new_color = (
+                new_values['r'],
+                new_values['g'],
+                new_values['b'],
+                new_values['kelvin'],
+            )
+            my_bulb.set_color_rgb(new_color)
     else:
         print(new_values)
 
@@ -53,13 +59,17 @@ def color_sliders_rgb():
         handle_color_change(rgb_color)
         return render_template("rgb_color_picker.html", form=rgb_color)
     elif request.method == "GET":
-        default_form = {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "kelvin": 2500
-        }
-        return render_template("rgb_color_picker.html", form=default_form)
+        if my_bulb is not None:
+            prev_values = my_bulb.get_color_rgb()
+            initial = prev_values
+        else:
+            initial = {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "kelvin": 2500
+            }
+        return render_template("rgb_color_picker.html", form=initial)
 
 def start_frontend(lightbulb, host, port):
     global my_bulb
