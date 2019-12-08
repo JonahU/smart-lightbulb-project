@@ -16,9 +16,5 @@ def start_sound(duration=10):
         sounddevice.sleep(duration * 1000)
 
 
-def main():
-    start_sound()
-
-
 if __name__ == "__main__":
-    main()
+    start_sound()

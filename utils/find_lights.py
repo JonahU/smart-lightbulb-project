@@ -2,7 +2,7 @@ import sys
 from lifxlan import LifxLAN
 
 
-def main():
+def find_lights():
     '''
     SOURCE:
     https://github.com/mclarkk/lifxlan/blob/master/examples/hello_world.py
@@ -35,4 +35,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    find_lights()
