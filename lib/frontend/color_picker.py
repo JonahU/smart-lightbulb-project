@@ -94,7 +94,7 @@ def experiments():
 def start_frontend(lightbulb, host, port):
     global my_bulb
     my_bulb = lightbulb
-    flask_frontend.run(debug=True, host=host, port=port)
+    flask_frontend.run(host=host, port=port)
 
 
 if __name__ == '__main__':

@@ -12,6 +12,7 @@ def print_sound(indata, outdata, frames, time, status):
 
 
 def start_sound(duration=10):
+    # Duration = 10 seconds
     with sounddevice.Stream(callback=print_sound):
         sounddevice.sleep(duration * 1000)
 
