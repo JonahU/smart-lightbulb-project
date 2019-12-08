@@ -1,29 +1,12 @@
 from flask import Flask, request, render_template, after_this_request
+from handler import (
+    handle_color_change,
+    handle_flicker,
+    handle_randomize,
+    handle_start_listening)
 
 flask_frontend = Flask(__name__)
 my_bulb = None
-
-
-def handle_color_change(new_values):
-    if my_bulb is not None:
-        if "hue" in new_values:  # hsbk
-            new_color = (
-                new_values['hue'],
-                new_values['saturation'],
-                new_values['brightness'],
-                new_values['kelvin']
-            )
-            my_bulb.set_color(new_color)
-        else:  # rgb
-            new_color = (
-                new_values['r'],
-                new_values['g'],
-                new_values['b'],
-                new_values['kelvin'],
-            )
-            my_bulb.set_color_rgb(new_color)
-    else:
-        print(new_values)
 
 
 @flask_frontend.route('/', methods=['GET'])
@@ -35,7 +18,7 @@ def root():
 def color_sliders_hsbk():
     if request.method == "POST":
         hsbk_color = request.form  # hue, saturation, brightness, kelvin
-        handle_color_change(hsbk_color)
+        handle_color_change(my_bulb, hsbk_color)
         return render_template("hsbk_color_picker.html", form=hsbk_color)
     elif request.method == "GET":
         if my_bulb is not None:
@@ -60,7 +43,7 @@ def color_sliders_hsbk():
 def color_sliders_rgb():
     if request.method == "POST":
         rgb_color = request.form
-        handle_color_change(rgb_color)
+        handle_color_change(my_bulb, rgb_color)
         return render_template("rgb_color_picker.html", form=rgb_color)
     elif request.method == "GET":
         if my_bulb is not None:
@@ -81,11 +64,11 @@ def experiments():
     if request.method == "POST":
         if "sound-experiment" in request.form:
             # Sound experiment button was pressed
-            my_bulb.start_listening(duration=20)
+            handle_start_listening(my_bulb)
         elif "randomize-experiment" in request.form:
-            my_bulb.randomize()
+            handle_randomize(my_bulb)
         elif "flicker-experiment" in request.form:
-            my_bulb.flicker()
+            handle_flicker(my_bulb)
         return render_template("experiments.html")
     elif request.method == "GET":
         return render_template("experiments.html")

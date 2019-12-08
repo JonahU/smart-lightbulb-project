@@ -1,14 +1,19 @@
 # Utils
-from os import environ
+from os import environ, path as ospath
+from sys import path as syspath
 from dotenv import load_dotenv
 
+# Add frontend to path
+lib_directory = ospath.dirname(__file__)
+syspath.append(f'{lib_directory}{ospath.sep}frontend')
+
 # Core
-from frontend.color_picker import start_frontend
-from light_bulb import LightBulb
+from frontend.color_picker import start_frontend  # nopep8
+from light_bulb import LightBulb  # nopep8
 
 # Exception handling
-from lifxlan import WorkflowException
-from socket import gaierror
+from lifxlan import WorkflowException  # nopep8
+from socket import gaierror  # nopep8
 
 
 def main():
