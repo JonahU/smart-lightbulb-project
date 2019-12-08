@@ -8,12 +8,12 @@ lib_directory = ospath.dirname(__file__)
 syspath.append(f'{lib_directory}{ospath.sep}frontend')
 
 # Core
-from frontend.app import start_frontend  # nopep8
-from light_bulb import LightBulb  # nopep8
+from frontend.app import start_frontend  # noqa: E402
+from light_bulb import LightBulb         # noqa: E402
 
 # Exception handling
-from lifxlan import WorkflowException  # nopep8
-from socket import gaierror  # nopep8
+from lifxlan import WorkflowException    # noqa: E402
+from socket import gaierror              # noqa: E402
 
 
 def main():
