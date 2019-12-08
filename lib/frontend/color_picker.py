@@ -82,6 +82,10 @@ def experiments():
         if "sound-experiment" in request.form:
             # Sound experiment button was pressed
             my_bulb.start_listening(duration=20)
+        elif "randomize-experiment" in request.form:
+            my_bulb.randomize()
+        elif "flicker-experiment" in request.form:
+            my_bulb.flicker()
         return render_template("experiments.html")
     elif request.method == "GET":
         return render_template("experiments.html")

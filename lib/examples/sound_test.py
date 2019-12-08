@@ -1,13 +1,12 @@
 import sounddevice
 import numpy
 
-'''
-SOURCE:
-https://stackoverflow.com/questions/40138031/how-to-read-realtime-microphone-audio-volume-in-python-and-ffmpeg-or-similar
-'''
-
 
 def print_sound(indata, outdata, frames, time, status):
+    '''
+    SOURCE:
+    https://stackoverflow.com/questions/40138031/how-to-read-realtime-microphone-audio-volume-in-python-and-ffmpeg-or-similar
+    '''
     volume_norm = numpy.linalg.norm(indata)*10
     print("|" * int(volume_norm))
 

@@ -4,22 +4,31 @@
       <form action="/experiments" method="POST" role="form">
          <button type="button" onclick="location.href = '/';">Go back &larr;</button>
          <h1>Experiments Page</h1>
-         <div id="saturation" style="border-style: solid; border-width: 2px; padding: 5px; max-width: 400px;">
+         <div id="sound" style="border-style: solid; border-width: 2px; padding: 5px; margin-bottom: 20px; max-width: 400px;">
             <h3>Sound Experiment:</h3> 
-            <p>Sync smart bulb's brightness with microphone input volume for <span id="countdown">20 </span> seconds</p>
-
+            <p>Sync smart bulb's brightness with microphone input volume for <span id="sound-countdown">20 </span> seconds</p>
             <script type="text/javascript">
-            const startCountdown = () => {
-                let timeleft = 20;
-                let downloadTimer = setInterval(() => {
-                timeleft--;
-                document.getElementById("countdown").textContent = timeleft;
-                if(timeleft <= 0)
-                    clearInterval(downloadTimer);
-                },1000);
-            }
+                const startSoundCountdown = () => {
+                    let timeleft = 20;
+                    let downloadTimer = setInterval(() => {
+                    timeleft--;
+                    document.getElementById("sound-countdown").textContent = timeleft;
+                    if(timeleft <= 0)
+                        clearInterval(downloadTimer);
+                    },1000);
+                }
             </script>
-            <input style="padding: 5px; width: 100px;" type="submit" name="sound-experiment" onclick="startCountdown()" value="Try Me" />
+            <input style="padding: 5px; width: 100px;" type="submit" name="sound-experiment" onclick="startSoundCountdown()" value="Try Me" />
+        </div>
+        <div id="randomize" style="border-style: solid; border-width: 2px; padding: 5px; margin-bottom: 20px; max-width: 400px;">
+            <h3>Random Color Experiment:</h3> 
+            <p>Randomize the bulb's color</p>
+            <input style="padding: 5px; width: 100px;" type="submit" name="randomize-experiment" value="Try Me" />
+        </div>
+        <div id="flicker" style="border-style: solid; border-width: 2px; padding: 5px; margin-bottom: 20px; max-width: 400px;">
+            <h3>Flicker Experiment:</h3> 
+            <p>Flicker for 10 seconds</p>
+            <input style="padding: 5px; width: 100px;" type="submit" name="flicker-experiment" value="Try Me" />
         </div>
       </form>
    </body>
