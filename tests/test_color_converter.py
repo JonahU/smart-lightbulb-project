@@ -17,12 +17,13 @@ MAX_R = 100
 MAX_G = 100
 MAX_B = 100
 
+
 def test_to_rgb():
     hue = '24000'
     brightness = '54000'
     saturation = '2100'
     after = color_converter.to_rgb(hue, saturation, brightness)
-    
+
     assert type(after) == dict
     assert 'r' in after
     assert 'g' in after
@@ -33,13 +34,14 @@ def test_to_rgb():
     assert 0 < after['g'] < 100
     assert 0 < after['b'] < 100
 
+
 def test_to_rgb_min():
     hue = str(MIN_HUE)
     brightness = str(MIN_BRIGHTNESS)
     saturation = str(MIN_SATURATION)
     kelvin = str(MIN_KELVIN)
     after = color_converter.to_rgb(hue, saturation, brightness, kelvin=kelvin)
-    
+
     assert type(after) == dict
     assert 'r' in after
     assert 'g' in after
@@ -51,13 +53,14 @@ def test_to_rgb_min():
     assert after['b'] == MIN_B
     assert after['kelvin'] == kelvin
 
+
 def test_to_rgb_max():
     hue = str(MAX_HUE)
     brightness = str(MAX_BRIGHTNESS)
     saturation = str(MAX_SATURATION)
     kelvin = str(MAX_KELVIN)
     after = color_converter.to_rgb(hue, saturation, brightness, kelvin=kelvin)
-    
+
     assert type(after) == dict
     assert 'r' in after
     assert 'g' in after
@@ -68,6 +71,7 @@ def test_to_rgb_max():
     assert after['g'] == MAX_G
     assert after['b'] == MAX_B
     assert after['kelvin'] == kelvin
+
 
 def test_from_rgb():
     r = '82'
@@ -95,6 +99,7 @@ def test_from_rgb_min():
     assert after[1] == MIN_SATURATION
     assert after[2] == MIN_BRIGHTNESS
     assert after[3] == kelvin
+
 
 def test_from_rgb_max():
     r = MAX_R
