@@ -8,7 +8,7 @@ lib_directory = ospath.dirname(__file__)
 syspath.append(f'{lib_directory}{ospath.sep}frontend')
 
 # Core
-from frontend.color_picker import start_frontend  # nopep8
+from frontend.app import start_frontend  # nopep8
 from light_bulb import LightBulb  # nopep8
 
 # Exception handling
