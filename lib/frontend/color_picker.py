@@ -76,6 +76,17 @@ def color_sliders_rgb():
         return render_template("rgb_color_picker.html", form=initial)
 
 
+@flask_frontend.route('/experiments', methods=['GET', 'POST'])
+def experiments():
+    if request.method == "POST":
+        if "sound-experiment" in request.form:
+            # Sound experiment button was pressed
+            my_bulb.start_listening()
+        return render_template("experiments.html")
+    elif request.method == "GET":
+        return render_template("experiments.html")
+
+
 def start_frontend(lightbulb, host, port):
     global my_bulb
     my_bulb = lightbulb

@@ -3,6 +3,11 @@ from lifxlan import LifxLAN
 
 
 def main():
+    '''
+    SOURCE:
+    https://github.com/mclarkk/lifxlan/blob/master/examples/hello_world.py
+    '''
+
     num_lights = None
     if len(sys.argv) != 2:
         print("\nDiscovery will go much faster if you provide the number\
