@@ -3,9 +3,10 @@ from flask import Flask, request, render_template, after_this_request
 flask_frontend = Flask(__name__)
 my_bulb = None
 
+
 def handle_color_change(new_values):
     if my_bulb is not None:
-        if "hue" in new_values: # hsbk
+        if "hue" in new_values:  # hsbk
             new_color = (
                 new_values['hue'],
                 new_values['saturation'],
@@ -13,7 +14,7 @@ def handle_color_change(new_values):
                 new_values['kelvin']
             )
             my_bulb.set_color(new_color)
-        else: # rgb
+        else:  # rgb
             new_color = (
                 new_values['r'],
                 new_values['g'],
@@ -24,14 +25,16 @@ def handle_color_change(new_values):
     else:
         print(new_values)
 
+
 @flask_frontend.route('/', methods=['GET'])
 def root():
     return render_template("index.html")
 
-@flask_frontend.route('/hsbk', methods=['GET','POST'])
+
+@flask_frontend.route('/hsbk', methods=['GET', 'POST'])
 def color_sliders_hsbk():
     if request.method == "POST":
-        hsbk_color = request.form # hue, saturation, brightness, kelvin
+        hsbk_color = request.form  # hue, saturation, brightness, kelvin
         handle_color_change(hsbk_color)
         return render_template("hsbk_color_picker.html", form=hsbk_color)
     elif request.method == "GET":
@@ -52,7 +55,8 @@ def color_sliders_hsbk():
             }
         return render_template("hsbk_color_picker.html", form=initial)
 
-@flask_frontend.route('/rgb', methods=['GET','POST'])
+
+@flask_frontend.route('/rgb', methods=['GET', 'POST'])
 def color_sliders_rgb():
     if request.method == "POST":
         rgb_color = request.form
@@ -71,10 +75,12 @@ def color_sliders_rgb():
             }
         return render_template("rgb_color_picker.html", form=initial)
 
+
 def start_frontend(lightbulb, host, port):
     global my_bulb
     my_bulb = lightbulb
     flask_frontend.run(debug=True, host=host, port=port)
 
+
 if __name__ == '__main__':
-   flask_frontend.run(debug=True)
+    flask_frontend.run(debug=True)
