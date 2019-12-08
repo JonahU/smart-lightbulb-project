@@ -21,14 +21,14 @@ def main():
     try:
         with LightBulb(environ['LIGHT_MAC'], environ['LIGHT_IP']) as my_bulb:
             start_frontend(my_bulb, environ['HOST'], environ['PORT'])
-    except gaierror as err:
+    except gaierror:
         print(
             'Invalid LIGHT_IP environment variable value:',
             f'"{environ["LIGHT_IP"]}"',
             "\nTo check your bulb's IP address",
             "please run the utils/find_lights.py script"
         )
-    except WorkflowException as err:
+    except WorkflowException:
         print(
             'Unable to connect to bulb with address:',
             f'"{environ["LIGHT_MAC"]}"',
