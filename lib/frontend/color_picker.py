@@ -81,7 +81,7 @@ def experiments():
     if request.method == "POST":
         if "sound-experiment" in request.form:
             # Sound experiment button was pressed
-            my_bulb.start_listening()
+            my_bulb.start_listening(duration=20)
         return render_template("experiments.html")
     elif request.method == "GET":
         return render_template("experiments.html")

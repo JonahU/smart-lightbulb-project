@@ -6,8 +6,20 @@
          <h1>Experiments Page</h1>
          <div id="saturation" style="border-style: solid; border-width: 2px; padding: 5px; max-width: 400px;">
             <h3>Sound Experiment:</h3> 
-            <p>Sync smart bulb's brightness with microphone input volume</p>
-            <input style="padding: 5px; width: 100px;" type="submit" name="sound-experiment" value="Try Me" />
+            <p>Sync smart bulb's brightness with microphone input volume for <span id="countdown">20 </span> seconds</p>
+
+            <script type="text/javascript">
+            const startCountdown = () => {
+                let timeleft = 20;
+                let downloadTimer = setInterval(() => {
+                timeleft--;
+                document.getElementById("countdown").textContent = timeleft;
+                if(timeleft <= 0)
+                    clearInterval(downloadTimer);
+                },1000);
+            }
+            </script>
+            <input style="padding: 5px; width: 100px;" type="submit" name="sound-experiment" onclick="startCountdown()" value="Try Me" />
         </div>
       </form>
    </body>
