@@ -1,4 +1,4 @@
-# Jonah Usadi MPCS 51046 (Autumn 2019) Course Project
+# MPCS 51046 (Autumn 2019) Course Project - Jonah Usadi
 
 ## Overview - Smart light bulb library
 
@@ -6,7 +6,7 @@ This library provides functionality to interface with LIFX color smart light bul
 
 ### Getting started
 
-Set the `LIGHT_IP` and `LIGHT_MAC` environment variables in the `.env` file in the root of the project. If you are unsure of your light's ip and mac addresses, run the `utils/find_lights.py` script.
+Set the `LIGHT_IP` and `LIGHT_MAC` environment variables in the `.env` file in the root of the project. If you are unsure of your light's ip and mac addresses, run the `utils/find_lights.py` script. Make sure your WiFi connection is 2.4GHz (this is the required frequency for connecting to LIFX devices).
 
 Install the following dependencies:
 
@@ -17,7 +17,7 @@ Install the following dependencies:
 - flask (optional if importing LightBulb only)
 - pytest (if running tests)
 
-Once all of the above is set up. Run `lib/run.py`. If all is working correctly you should now be able to go the provided link and control the smart bulb via the web interface.
+Once all of the above is set up start the program by running `lib/run.py`. If all is working correctly you should now be able to go the provided link and control the smart bulb via the web interface.
 
 ### Tools used
 
@@ -26,12 +26,12 @@ Once all of the above is set up. Run `lib/run.py`. If all is working correctly y
 
 ### My testing environment
 
-I wrote and ran all of this code using using Python 3.7.x on a Windows machine. None of the code is platform specific and all of the libraries used claim multi-platform support. That being said, I have not tested this library on other machines or in other environments. Therefore I cannot guarantee functionality on operating systems/ all hardware. In particular, the `LightBulb.start_listening()` method might not function as it involves interfacing with your hardware microphone (via the sounddevice library).
+I wrote and ran all of this code using using Python 3.7.x on a Windows machine. None of the code is platform specific and all of the libraries used claim multi-platform support. That being said, I have not tested this library on other machines or in other environments. Therefore, I cannot guarantee functionality on other operating systems/ all hardware. In particular, the `LightBulb.start_listening()` method might not work correctly as it involves interfacing with your hardware microphone (via the sounddevice library).
 
 ### Known issues
 
 1) On the `/experiments` page, repeated pressing of the "Sound Experiment" button before the timer has finished counting down leads to unpredictable behavior and may cause the entire program to crash.
-2) Frontend scaling issues, particularly narrow windows may lead to overlapping text.
+2) Frontend scaling issues, in particular narrow windows may lead to overlapping text.
 
 ### Other utils
 
