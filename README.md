@@ -1,42 +1,42 @@
-# MPCS 51046 (Autumn 2019) Course Project
+# Jonah Usadi MPCS 51046 (Autumn 2019) Course Project
 
-## Guidelines
+## Overview - Smart light bulb library
 
-The course project is a chance for you to practice your Python skills in a more natural setting, applying them to a problem of interest to you rather than a manufactured homework or test problem. To maximize the benefit of the project, you are allowed to select any topic of your choosing. It can be a topic relevant to your day job (if you are currently employed) or your research (if you are in a research program), or simply something that is a personal interest. However, a project for another class that is written in Python cannot be used. If you are looking for inspiration, have a look at this list of [Python project ideas](https://realpython.com/intermediate-python-project-ideas/). The requirements of the project are as follows:
+This library provides functionality to interface with LIFX color smart light bulbs. The core of the library is the LightBulb class which can be found in the lib folder. This class extends the functionality of the Light class from [lifxlan](https://github.com/mclarkk/lifxlan). This library can be run directly with the provided lightweight web interface or imported within your own program. Some of the code in this library has been designed to work independently without a LIFX bulb (see 'other utils' below for more details). 
 
-- The project should demonstrate the knowledge that you have learned during the class. At a minimum, you are expected to make use of functions, classes, modules/packages, and functionality from the standard library.
-- The scope of the project should be significant enough to occupy your time for several weeks, but not so large in scope that what you originally proposed is unattainable.
-- You are to demonstrate good software development practices for the project. This includes use of version control (through GitHub classroom as we have done for homeworks), but also writing tests for your software and documentation. If you plan on open sourcing your project, you can take advantage of one of the many free continuous integration (CI) systems ([Travis](https://travis-ci.org/), [CircleCI](https://circleci.com/), [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/), etc.).
-- Your written code should conform to [PEP8](https://www.python.org/dev/peps/pep-0008/).
-- Your code should be cross-platform (i.e., works on Windows, macOS, and Linux) unless there is an obvious reason it is tied to a single platform.
+### Getting started
 
-There is no specific requirement for the user interface (UI). Your project could have a command-line interface, a graphical user interface (GUI), or it may be a web application or even an embedded application running on a microcontroller. However, do consider that the UI might require non-trivial skills that we have not covered in class; for example, if you have never built a web application before, you will need to first get over a learning curve related to web technologies (HTML, CSS, Javascript, etc.).
+Set the `LIGHT_IP` and `LIGHT_MAC` environment variables in the `.env` file in the root of the project. If you are unsure of your light's ip and mac addresses, run the `utils/find_lights.py` script.
 
-If you want to create a separate repository for your project (e.g., you plan on open sourcing it and want it to be attributed to your GitHub username), you are allowed to do so, but you'll need to add the separate repository as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) on the private repository on the mpcs-python organization that will be checked by graders. Alternatively, you can move your project into a new repository after the end of the quarter.
+Install the following dependencies:
 
-The project is an excellent opportunity for you to build software that you can showcase as part of a portfolio when you go off to seek employment. A practical demonstrations of your knowledge and ability is worth much more than words on a resume!
+- lifxlan
+- sounddevice
+- numpy
+- python-dotenv (optional if importing LightBulb only)
+- flask (optional if importing LightBulb only)
+- pytest (if running tests)
 
-### Proposal
+Once all of the above is set up. Run `lib/run.py`. If all is working correctly you should now be able to go the provided link and control the smart bulb via the web interface.
 
-Before you begin working on your project, you are to submit a short proposal (1 page or less) that outlines what you plan on developing for your project and, if applicable, how you imagine breaking it down into individual components (modules). If there are obvious third-party packages that will be used in your project, please identify them (it's not necessary to identify standard-library modules).
+### Tools used
 
-The project proposal is due on **November 8th at 11:59pm CT**. You should submit your proposal by uploading it to your private repository on GitHub. Any normal file format (Word document, Markdown, plain text, etc.) is acceptable.
+- pytest is required to run tests. If a connection to a LIFX light bulb cannot be established, some of the tests will be skipped.
+- pycodestyle is used for linting.
 
-### Progress / Due Date
+### My testing environment
 
-To ensure that all the work for the project is not left until the last minute, you are required to demonstrate progress on your project by making non-trivial commits to your project repository by **November 22nd**. You are not required to have a working product, but the course staff will be checking to see that you have made a good faith effort toward beginning work and are making progress. Failure to demonstrate progress will result in an automatic loss of 20% of the points for the project.
+I wrote and ran all of this code using using Python 3.7.x on a Windows machine. None of the code is platform specific and all of the libraries used claim multi-platform support. That being said, I have not tested this library on other machines or in other environments. Therefore I cannot guarantee functionality on operating systems/ all hardware. In particular, the `LightBulb.start_listening()` method might not function as it involves interfacing with your hardware microphone (via the sounddevice library).
 
-The final version of your project must be committed and pushed to your GitHub repository by **December 8th at 11:59pm CT**.
+### Known issues
 
-### Presentation
+1) On the `/experiments` page, repeated pressing of the "Sound Experiment" button before the timer has finished counting down leads to unpredictable behavior and may cause the entire program to crash.
+2) Frontend scaling issues, particularly narrow windows may lead to overlapping text.
 
-Each student will give a 5 minute presentation of their project during the last class meeting on **December 12th**.
+### Other utils
 
-### Grading
+The following are included with the library and can be run independent of a LIFX bulb:
 
-- Proposal: 10%
-- Code: 50%
-- Tests: 10%
-- Documentation 10%
-- Style: 5%
-- Presentation: 15%
+- `utils/find_lights.py` - Detect and outputs all discoverable LIFX lights
+- `utils/sound_test.py` - Using the same logic as `LightBulb.start_listening()`, picks up input from built-in microphone and outputs to console
+- `lib/frontend/app.py` - Run the frontend without a LIFX bulb, outputs what would happen to the bulb to the console

@@ -58,7 +58,7 @@ class LightBulb(Light):
             b=MIN_B,
             kelvin=MIN_KELVIN)
         Returns a min values color tuple in RGB + kelvin format
-    rgbp_max(
+    rgbk_max(
             r=MAX_R,
             g=MAX_G,
             b=MAX_B,

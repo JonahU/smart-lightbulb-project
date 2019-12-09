@@ -26,7 +26,8 @@ MAX_R = 100
 MAX_G = 100
 MAX_B = 100
 
-from lib import light_bulb  # noqa: E402
+from lib import light_bulb   # noqa: E402
+from socket import gaierror  # noqa: E402
 load_dotenv()
 
 bulb = None
@@ -36,7 +37,7 @@ try:
             environ['LIGHT_MAC'],
             environ['LIGHT_IP']) as bulb:
         no_connection = False
-except light_bulb.WorkflowException:
+except (light_bulb.WorkflowException, gaierror):
     no_connection = True
 
 
