@@ -16,7 +16,7 @@ class LightBulb(Light):
 
     Important Inherited Methods
     -------
-    __init__(mac_address, ip_address)
+    __init__(mac_addr, ip_addr)
         LightBulb constructor
     get_color():
         Returns the color of the bulb in HSBK format
@@ -78,15 +78,6 @@ class LightBulb(Light):
     MAX_G = 100
     MIN_B = 0
     MAX_B = 100
-
-    def __enter__(self):
-        '''Turn on bulb with 3 second transition'''
-        self.set_power(1, 3000)
-        return self
-
-    def __exit__(self, exception_type, exception_value, traceback):
-        '''Turn off bulb'''
-        self.set_power(0)
 
     def get_color_rgb(self):
         '''Return color in RGB + kelvin format'''
@@ -173,6 +164,7 @@ class LightBulb(Light):
             # Occurs occasionally when changing colors quickly
             pass
 
+    # Static methods
     @staticmethod
     def hsbk_min(
             hue=MIN_HUE,
@@ -208,3 +200,19 @@ class LightBulb(Light):
             kelvin=MAX_KELVIN):
         '''Returns a max values color tuple in RGB + kelvin format'''
         return (r, g, b, kelvin)
+
+    # Double underscore methods
+    def __repr__(self):
+        return (
+            f'LightBulb(mac_addr = {self.mac_addr}, '
+            f'ip_addr = {self.ip_addr}, '
+            f'color = {self.color})')
+
+    def __enter__(self):
+        '''Turn on bulb with 3 second transition'''
+        self.set_power(1, 3000)
+        return self
+
+    def __exit__(self, exception_type, exception_value, traceback):
+        '''Turn off bulb'''
+        self.set_power(0)
