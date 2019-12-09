@@ -18,6 +18,8 @@ class LightBulb(Light):
     -------
     __init__(mac_addr, ip_addr)
         LightBulb constructor
+    set_power(power):
+        Turn the bulb on/off
     get_color():
         Returns the color of the bulb in HSBK format
     set_color(hsbk)

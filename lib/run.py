@@ -30,7 +30,7 @@ def main():
         )
     except WorkflowException:
         print(
-            'Unable to connect to bulb with address:',
+            'Unable to connect to bulb with MAC address:',
             f'"{environ["LIGHT_MAC"]}"',
             '\nPlease verify the bulb is connected to power',
             'and that your environment variables are set correctly',
