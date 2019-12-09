@@ -24,15 +24,11 @@ def test_to_rgb():
     saturation = '2100'
     after = color_converter.to_rgb(hue, saturation, brightness)
 
-    assert type(after) == dict
-    assert 'r' in after
-    assert 'g' in after
-    assert 'b' in after
-    assert 'kelvin' not in after
-
-    assert 0 < after['r'] < 100
-    assert 0 < after['g'] < 100
-    assert 0 < after['b'] < 100
+    assert type(after) == tuple
+    assert len(after) == 3
+    assert 0 < after[0] < 100
+    assert 0 < after[1] < 100
+    assert 0 < after[2] < 100
 
 
 def test_to_rgb_min():
@@ -42,16 +38,12 @@ def test_to_rgb_min():
     kelvin = str(MIN_KELVIN)
     after = color_converter.to_rgb(hue, saturation, brightness, kelvin=kelvin)
 
-    assert type(after) == dict
-    assert 'r' in after
-    assert 'g' in after
-    assert 'b' in after
-    assert 'kelvin' in after
-
-    assert after['r'] == MIN_R
-    assert after['g'] == MIN_G
-    assert after['b'] == MIN_B
-    assert after['kelvin'] == kelvin
+    assert type(after) == tuple
+    assert len(after) == 4
+    assert after[0] == MIN_R
+    assert after[1] == MIN_G
+    assert after[2] == MIN_B
+    assert after[3] == kelvin
 
 
 def test_to_rgb_max():
@@ -61,16 +53,12 @@ def test_to_rgb_max():
     kelvin = str(MAX_KELVIN)
     after = color_converter.to_rgb(hue, saturation, brightness, kelvin=kelvin)
 
-    assert type(after) == dict
-    assert 'r' in after
-    assert 'g' in after
-    assert 'b' in after
-    assert 'kelvin' in after
-
-    assert after['r'] == MAX_R
-    assert after['g'] == MAX_G
-    assert after['b'] == MAX_B
-    assert after['kelvin'] == kelvin
+    assert type(after) == tuple
+    assert len(after) == 4
+    assert after[0] == MAX_R
+    assert after[1] == MAX_G
+    assert after[2] == MAX_B
+    assert after[3] == kelvin
 
 
 def test_from_rgb():

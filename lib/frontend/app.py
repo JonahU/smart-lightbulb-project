@@ -70,7 +70,12 @@ def color_sliders_rgb():
     elif request.method == "GET":
         if my_bulb is not None:
             prev_values = my_bulb.get_color_rgb()
-            initial = prev_values
+            initial = {
+                "r": prev_values[0],
+                "g": prev_values[1],
+                "b": prev_values[2],
+                "kelvin": prev_values[3]
+            }
         else:
             initial = {
                 "r": 0,

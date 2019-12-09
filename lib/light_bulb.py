@@ -195,7 +195,7 @@ class LightBulb(Light):
         return (r, g, b, kelvin)
 
     @staticmethod
-    def rgbp_max(
+    def rgbk_max(
             r=MAX_R,
             g=MAX_G,
             b=MAX_B,
