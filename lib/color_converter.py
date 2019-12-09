@@ -2,6 +2,7 @@ import colorsys
 
 
 def to_rgb(hue, saturation, brightness, kelvin=None):
+    '''Given HSB(K) values, normalize and output RGB(K) dictionary'''
     hue = int(hue)/65535
     lightness = int(brightness)/65535
     saturation = int(saturation)/65535
@@ -16,6 +17,7 @@ def to_rgb(hue, saturation, brightness, kelvin=None):
 
 
 def from_rgb(r, g, b, kelvin=None):
+    '''Given RGB(K) values, normalize and output HSB(K) tuple'''
     r = int(r)/100
     g = int(g)/100
     b = int(b)/100
