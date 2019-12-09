@@ -1,3 +1,11 @@
+'''
+The purpose of this file is so that the frontend can run/ debugged
+without a bulb connection. If the LightBulb object passed in
+as the first positional argument is None, the handle functions
+print what the LightBulb would do if connected.
+'''
+
+
 def handle_color_change(my_bulb, new_values):
     if my_bulb is not None:
         if "hue" in new_values:  # hsbk

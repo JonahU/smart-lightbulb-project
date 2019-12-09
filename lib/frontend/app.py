@@ -1,3 +1,25 @@
+'''
+This module defines four routes:
+    /               -   Homepage
+    /hsbk           -   HSBK color picker
+    /rgb            -   RGB color picker
+    /experiments    -   Experiments page
+
+HTML files for the different routes are located in the templates folder
+
+HOW TO RUN:
+    1) This module can be executed directly from the command line for
+        testing purposes
+    2) This module can be run from another python file with function
+        start_frontend(lightbulb, host=localhost, port=5000)
+
+KNOWN ISSUES:
+    1) On the experiments page, repeated pressing of the "Sound Experiment"
+        button before the timer has finished counting down leads to
+        unpredictable behavior and may cause the entire program to crash.
+    2) Some scaling issues with narrow windows may lead to overlapping text.
+'''
+
 from flask import Flask, request, render_template, after_this_request
 from handler import (
     handle_color_change,
@@ -74,7 +96,7 @@ def experiments():
         return render_template("experiments.html")
 
 
-def start_frontend(lightbulb, host, port):
+def start_frontend(lightbulb, host="localhost", port=5000):
     global my_bulb
     my_bulb = lightbulb
     flask_frontend.run(host=host, port=port)
