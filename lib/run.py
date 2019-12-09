@@ -3,7 +3,7 @@ from os import environ, path as ospath
 from sys import path as syspath
 from dotenv import load_dotenv
 
-# Add frontend to path
+# Add frontend directory to path
 lib_directory = ospath.dirname(__file__)
 syspath.append(f'{lib_directory}{ospath.sep}frontend')
 
