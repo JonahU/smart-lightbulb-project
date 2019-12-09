@@ -2,7 +2,7 @@
 
 ## Overview - Smart light bulb library
 
-This library provides functionality to interface with LIFX color smart light bulbs. The core of the library is the LightBulb class which can be found in the lib folder. This class extends the functionality of the Light class from [lifxlan](https://github.com/mclarkk/lifxlan). This library can be run directly with the provided lightweight web interface or imported within your own program. Some of the code in this library has been designed to work independently without a LIFX bulb (see 'other utils' below for more details). 
+This library provides functionality to interface with LIFX color smart light bulbs. The core of the library is the LightBulb class which can be found in the lib folder. This class extends the functionality of the Light class from [lifxlan](https://github.com/mclarkk/lifxlan). This library can be run directly with the provided lightweight web interface or imported for use within your own program. Some of the code in this library has been designed to work independently without a LIFX bulb (see 'other utils' below for more details). 
 
 ### Getting started
 
@@ -26,7 +26,7 @@ Once all of the above is set up start the program by running `lib/run.py`. If al
 
 ### My testing environment
 
-I wrote and ran all of this code using using Python 3.7.x on a Windows machine. None of the code is platform specific and all of the libraries used claim multi-platform support. That being said, I have not tested this library on other machines or in other environments. Therefore, I cannot guarantee functionality on other operating systems/ all hardware. In particular, the `LightBulb.start_listening()` method might not work correctly as it involves interfacing with your hardware microphone (via the sounddevice library).
+I wrote and ran all of this code using using Python 3.7.x on a Windows machine. None of the code is platform specific and all of the libraries used claim multi-platform support. That being said, I have not tested this library on other machines or in other environments. Therefore, I cannot guarantee functionality on other operating systems/ all hardware. In particular, the `LightBulb.start_listening()` method may not work correctly as it involves interfacing with your hardware microphone (via the sounddevice library).
 
 ### Known issues
 
